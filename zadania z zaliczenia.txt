@@ -1,0 +1,113 @@
+zadanie 1
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+struct trojkat{
+	int a, b, c;
+	int obw(int a, int b,int c);//moze byc tez double
+
+
+
+};
+int trojkat::obw(int a, int b, int c)
+{
+	int L;
+	L += a + b + c;
+	return L;
+
+}
+
+int main(int n, char *z [])
+{
+	trojkat obiekt;
+	int* tablica;
+	tablica = new int [n];
+	for (int i = 2; i < n; ++i)
+	{
+		tablica[i] = stoi(z[i]);
+		tablica[i+1] = stoi(z[i+1]);
+		tablica[i+2] = stoi(z[i+2]);
+		obiekt.a = tablica[i];
+		obiekt.b = tablica[i+1];
+		obiekt.c = tablica[i+2];
+		obiekt.obw(obiekt.a, obiekt.b, obiekt.c);
+	}
+	system("pause");
+
+}
+ zadanie 2
+#include<iostream>
+#include<string>
+#include<random>
+
+using namespace std;
+int* fun(int**tablica, int n, int m)
+{
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; i < m; ++j)
+		{
+			int *tablica_max = tablica[0];
+			int k, l;
+			if (tablica_max[i] < tablica[i + 1])
+			{
+				tablica_max = tablica[i][j];
+				k = i;
+				l = j;
+			}
+		}
+
+	}
+
+}
+
+int main()
+{
+	random_device R;
+	int n, m;
+	cin >> n >> m;
+	int** t = new int* [n];
+	for (int i = 0; i < n; ++i)
+		t[i] = new int[m];
+	for (int i = 0; i < n; ++i)
+		for (int j = 0; j < m; j++)
+			t[i][j] = R() % 100;
+
+	
+	fun(t, n, m);
+
+	system("pause");
+
+}
+
+zadanie 3
+
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+
+	ifstream s, z;
+	cin >> s >> z;
+	if (!s.good())//sprawdza czy plik jest otwarty
+		return -1;
+	if (!z.good())
+		return -1;
+	char a, b;//znaki
+	int ile = 0;//licznik
+	while (s.get(a) && z.get(b))// przechodzi kazdy znak w obu plikach
+	{
+		if (a != b)
+			++ile;
+	}
+	++ile;
+	cout << "Rożnica znaków pomiedzy plikami wynosi:" << ile << endl;
+	s.close();
+	z.close();
+}
